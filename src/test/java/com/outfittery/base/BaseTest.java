@@ -1,11 +1,13 @@
 package com.outfittery.base;
 
 import org.junit.After;
-import org.junit.AfterClass;
+
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
 
@@ -33,13 +35,25 @@ public class BaseTest {
     @Before
     public void setUp() {
         setSystemPathForDrivers();
-        driver = new ChromeDriver();
+
+        ChromeOptions opt = new ChromeOptions();
+        opt.addArguments("disable-infobars");
+        opt.addArguments("--start-maximized");
+        opt.addArguments("--disable-extensions");
+        driver = new ChromeDriver(opt);
         driver.get("http://www.outfittery.com");
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
     }
 
     @After
     public void tearDown() {
-        driver.quit();
+        if( !(null==(driver)) ) {
+            driver.close();
+            driver.quit();
+        }
     }
+
+
 
 }

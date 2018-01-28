@@ -8,6 +8,11 @@ sourceCompatibility = 1.8
 
 dependencies {
     testCompile 'junit:junit:4.11'
-    testCompile 'org.seleniumhq.selenium:selenium-java:3.4.0'
+    testCompile 'org.seleniumhq.selenium:selenium-java:3.6.0'
     testCompile 'log4j:log4j:1.2.16'
+
+    testCompile 'info.cukes:cucumber-java:1.2.5'
+    testCompile 'info.cukes:cucumber-testng:1.2.5'
+    testCompile 'info.cukes:cucumber-junit:1.2.5'
+
 }

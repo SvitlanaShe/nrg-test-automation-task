@@ -1,24 +1,22 @@
 package com.outfittery.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class HomePage {
+import java.util.List;
+
+public class ErrorPage {
 
     private WebDriver driver;
 
-    public HomePage(WebDriver driver) {
+    public ErrorPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(this.driver, this);
 
     }
 
-    By shoppingForMen = By.xpath("//h1[@class='mb-head']");
-
-    public boolean onHomePage() {
-        return driver.findElements(shoppingForMen).size() != 0;
-    }
+    @FindBy(xpath = "//div[@class='toast-message']")
+    public List<WebElement> error;
 }
